@@ -1,0 +1,22 @@
+## custom app properties
+#info:
+#  app:
+#    name: ${spring.application.name}
+#    desc: ${spring.application.desc}
+#    version: ${spring.application.version}
+#    author: Voivod
+#    build-timestamp: #{maven.build.timestamp}
+#    profiles:
+#      active: ${spring.profiles.active}
+
+# expose actuator metrics endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - 'health'
+          - 'info'
+        info:
+          env:
+            enabled: true

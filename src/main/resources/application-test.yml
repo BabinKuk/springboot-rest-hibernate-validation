@@ -1,0 +1,58 @@
+## custom app properties
+#info:
+#  app:
+#    name: ${spring.application.name}
+#    desc: ${spring.application.desc}
+#    version: ${spring.application.version}
+#    author: Voivod
+#    build-timestamp: #{maven.build.timestamp}
+#    profiles:
+#      active: ${spring.profiles.active}
+
+# expose actuator metrics endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - 'health'
+          - 'info'
+        info:
+          env:
+            enabled: true
+
+test:
+  message: beastie boys
+
+## H2 Test Database creds
+#spring.datasource.url=jdbc:h2:mem:testdb
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.username=sa
+#spring.datasource.password=password
+#spring.datasource.initialization-mode=always
+#spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+#spring.h2.console.enabled=true
+#spring.jpa.hibernate.ddl-auto=create-drop
+#spring.jpa.show-sql = true
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  h2:
+    console:
+      enabled: true
+
+sql:
+  script:
+    employee:
+      insert: INSERT INTO employee(id,first_name,last_name,email) values(1,'firstNameStudent','lastNameStudent','firstNameStudent@babinuk.com')
+      delete: DELETE FROM employee
